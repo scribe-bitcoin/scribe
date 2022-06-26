@@ -22,7 +22,8 @@ defmodule Scribex.MixProject do
   defp deps do
     [
       {:aws, "~> 0.11.0"},
-      {:hackney, "~> 1.18"}
+      {:hackney, "~> 1.18"},
+      {:witchcraft, "~> 1.0"}
     ]
   end
 end
