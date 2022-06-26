@@ -48,6 +48,8 @@ defmodule Scribex do
     |> handle_response()
   end
 
+  def save_job(key, %{"JobStatus" => status} = job), do: Scribex.Jobs.add(key, job)
+
   def client() do
     key = Application.get_env(:scribex, :key)
     secret = Application.get_env(:scribex, :secret)
