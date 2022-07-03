@@ -25,7 +25,7 @@ defmodule Scribex.Jobs do
     end
   end
 
-  def delete do
+  def delete(key) do
     Agent.update(__MODULE__, fn state -> Map.delete(state, key) end)
   end
 end

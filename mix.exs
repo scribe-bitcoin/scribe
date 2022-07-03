@@ -23,7 +23,9 @@ defmodule Scribex.MixProject do
     [
       {:aws, "~> 0.11.0"},
       {:hackney, "~> 1.18"},
-      {:witchcraft, "~> 1.0"}
+      {:witchcraft, "~> 1.0"},
+      {:tentacat, "~> 2.2"},
+      {:git_cli, "~> 0.3.0"}
     ]
   end
 end
