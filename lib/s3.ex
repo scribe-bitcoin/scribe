@@ -2,7 +2,7 @@ defmodule Scribex.S3 do
   alias AWS.S3
   require Logger
 
-  @bucket "chaincode-btc"
+  @bucket "scribebtc-outputs"
 
   def list_by_prefix(prefix) do
     Scribex.client()
@@ -14,6 +14,25 @@ defmodule Scribex.S3 do
     Scribex.client()
     |> S3.get_object(@bucket, prefix)
     |> handle_response()
+  end
+
+  def to_s3uri(full_path) do
+    if String.starts_with?(full_path, "s3://") do
+      full_path
+    else
+      Path.join(["s3://", full_path])
+    end
+  end
+
+  def to_s3uri(bucket_name, prefix) do
+    Path.join(["s3://", bucket_name, prefix])
+  end
+
+  def from_s3uri(s3uri) do
+    case String.split(s3uri, "//", parts: 2) do
+      [_, path] -> String.split(path, "/", parts: 2)
+      _ -> {:error, "not an S3 URI."}
+    end
   end
 
   def handle_response(

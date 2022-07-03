@@ -115,18 +115,6 @@ defmodule Scribex do
     List.to_string([cap, rest])
   end
 
-  def to_s3uri(full_path) do
-    if String.starts_with?(full_path, "s3://") do
-      full_path
-    else
-      Path.join(["s3://", full_path])
-    end
-  end
-
-  def to_s3uri(bucket_name, prefix) do
-    Path.join(["s3://", bucket_name, prefix])
-  end
-
   def handle_response({:ok, response, %{status_code: 200}}), do: {:ok, response}
 
   def handle_response({:ok, response, %{status_code: code}}),

@@ -31,7 +31,7 @@ defmodule Scribex.InputDataConfig do
 
   def new(s3Uri) do
     %__MODULE__{}
-    |> Map.put(:s3Uri, Scribex.to_s3uri(s3Uri))
+    |> Map.put(:s3Uri, Scribex.S3.to_s3uri(s3Uri))
     |> Map.put(:contentType, Scribex.parse_file_type(s3Uri))
     |> Scribex.normalize_params()
   end
@@ -43,7 +43,7 @@ defmodule Scribex.OutputDataConfig do
 
   def new(s3Uri) do
     %__MODULE__{}
-    |> Map.put(:s3Uri, Scribex.to_s3uri(s3Uri))
+    |> Map.put(:s3Uri, Scribex.S3.to_s3uri(s3Uri))
     |> Scribex.normalize_params()
   end
 end
